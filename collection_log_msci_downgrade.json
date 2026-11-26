@@ -1,0 +1,28 @@
+{
+  "kata_kunci": "msci downgrade",
+  "waktu_eksekusi": {
+    "mulai": "2026-11-24T17:00:13.537271+00:00",
+    "selesai": "2026-11-24T17:00:23.035578+00:00"
+  },
+  "jendela_waktu": {
+    "wib_mulai": "2026-08-24",
+    "wib_selesai": "2026-11-25",
+    "since_utc": "2026-08-23T17:00:00Z",
+    "until_utc": "2026-11-24T17:00:00Z"
+  },
+  "total_baris": 198,
+  "integritas_berkas": {
+    "csv": {
+      "berkas": "pilot_msci_downgrade.csv",
+      "sha256": "e81368708c3751ffef57a26573192f6a207609ece5176e24c1822322990ece83"
+    },
+    "jsonl": {
+      "berkas": "pilot_msci_downgrade.jsonl",
+      "sha256": "b68992156c84f6e391541d8f5963bbc3a1b8aa2b1c4d50c850ad6b8e6fbf7c3e"
+    },
+    "sampel": {
+      "berkas": "sampel_msci_downgrade.csv",
+      "sha256": "b8d71dcb316600fd2b52eba51731eb90020c9dd078aef380058b99c78c01c12a"
+    }
+  }
+}

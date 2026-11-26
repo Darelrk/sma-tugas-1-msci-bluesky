@@ -1,0 +1,28 @@
+{
+  "kata_kunci": "msci standalone indonesia market",
+  "waktu_eksekusi": {
+    "mulai": "2026-11-24T16:59:10.321301+00:00",
+    "selesai": "2026-11-24T16:59:19.459308+00:00"
+  },
+  "jendela_waktu": {
+    "wib_mulai": "2026-08-24",
+    "wib_selesai": "2026-11-25",
+    "since_utc": "2026-08-23T17:00:00Z",
+    "until_utc": "2026-11-24T17:00:00Z"
+  },
+  "total_baris": 151,
+  "integritas_berkas": {
+    "csv": {
+      "berkas": "pilot_msci_standalone_indonesia_market.csv",
+      "sha256": "ec1d684d291fcc77b0115e0880078b19abd100dfa08676fbfb51171cad7212de"
+    },
+    "jsonl": {
+      "berkas": "pilot_msci_standalone_indonesia_market.jsonl",
+      "sha256": "83d2b2c5dcecb55d8640e8195122dd128a1bf63605d6f70d34768614d731a4ab"
+    },
+    "sampel": {
+      "berkas": "sampel_msci_standalone_indonesia_market.csv",
+      "sha256": "e33bb43121fce69cd7cadd6c509bf9f229741414ab18bd604862a49e7340febe"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kata_kunci": "msci standalone",
+  "waktu_eksekusi": {
+    "mulai": "2026-11-24T16:59:22.496529+00:00",
+    "selesai": "2026-11-24T16:59:36.284494+00:00"
+  },
+  "jendela_waktu": {
+    "wib_mulai": "2026-08-24",
+    "wib_selesai": "2026-11-25",
+    "since_utc": "2026-08-23T17:00:00Z",
+    "until_utc": "2026-11-24T17:00:00Z"
+  },
+  "total_baris": 224,
+  "integritas_berkas": {
+    "csv": {
+      "berkas": "pilot_msci_standalone.csv",
+      "sha256": "279969d993aea1409c50e7dab2d5be61a2ea50efa29f72b92072ab5947f889d1"
+    },
+    "jsonl": {
+      "berkas": "pilot_msci_standalone.jsonl",
+      "sha256": "2c4a6136c82798d72d4d6e4e331452c8b0dee03465015f1b3e62da19d418dfd0"
+    },
+    "sampel": {
+      "berkas": "sampel_msci_standalone.csv",
+      "sha256": "61352c0980631d0c59a513dcd4a7cddef41b11e34c2f097e2d8bed88beb4fbc9"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kata_kunci": "msci ihsg",
+  "waktu_eksekusi": {
+    "mulai": "2026-11-24T17:00:26.080321+00:00",
+    "selesai": "2026-11-24T17:00:37.092444+00:00"
+  },
+  "jendela_waktu": {
+    "wib_mulai": "2026-08-24",
+    "wib_selesai": "2026-11-25",
+    "since_utc": "2026-08-23T17:00:00Z",
+    "until_utc": "2026-11-24T17:00:00Z"
+  },
+  "total_baris": 181,
+  "integritas_berkas": {
+    "csv": {
+      "berkas": "pilot_msci_ihsg.csv",
+      "sha256": "bb8fe8d36e58177e5ecd479d5076f07cde54023fa8a8dc36d5b45b87b53b2eb4"
+    },
+    "jsonl": {
+      "berkas": "pilot_msci_ihsg.jsonl",
+      "sha256": "f7229d195c59b10a193978b3cb74a7d14d90cf21bd61ae841422911e9e6413b9"
+    },
+    "sampel": {
+      "berkas": "sampel_msci_ihsg.csv",
+      "sha256": "f77ea4dbae3dae6be0f88e612eeed3ac1d69e38e006a76163261eaf4ece3c55b"
+    }
+  }
+}

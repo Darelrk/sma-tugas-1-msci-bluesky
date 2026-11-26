@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EDA: MSCI Standalone Indonesia Market - Social Media Analytics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --primary: #0284c7;
+  --primary-light: #e0f2fe;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --accent: #f59e0b;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 24px;
+  line-height: 1.6;
+}
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+.header {
+  background: var(--surface);
+  padding: 24px 32px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.badge {
+  display: inline-block;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+h1 { margin: 0 0 6px 0; font-size: 1.75rem; color: #0369a1; }
+p.desc { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.card-stat {
+  background: var(--surface);
+  padding: 18px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.card-stat .title { font-size: 0.82rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.card-stat .value { font-size: 1.85rem; font-weight: 700; color: var(--text); margin-top: 4px; }
+.card-stat .sub { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+  .chart-grid { grid-template-columns: 1fr; }
+}
+.chart-card {
+  background: var(--surface);
+  padding: 22px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.chart-card h3 { margin-top: 0; font-size: 1.05rem; color: #1e293b; border-bottom: 2px solid var(--primary-light); padding-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 12px; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: #f1f5f9; color: #334155; font-weight: 600; }
+.tag-keep {
+  background: #dcfce7;
+  color: #15803d;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+}
+.insight-box {
+  background: #f0fdf4;
+  border-left: 4px solid #16a34a;
+  padding: 18px 24px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+.insight-box h4 { margin: 0 0 10px 0; color: #15803d; font-size: 1.05rem; }
+.insight-box ul { margin: 0; padding-left: 20px; font-size: 0.92rem; }
+.insight-box li { margin-bottom: 6px; }
+.section-title {
+  font-size: 1.25rem;
+  color: #1e293b;
+  margin: 32px 0 16px 0;
+  font-weight: 700;
+  border-left: 4px solid #0284c7;
+  padding-left: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <span class="badge">Social Media Analytics · Materi Praktik 4</span>
+    <h1>Exploratory Data Analysis (EDA): MSCI Standalone Indonesia Market</h1>
+    <p class="desc">Akuisisi Multi-Keyword Bertingkat, Validasi Presisi Wilson 95%, Deret Waktu, Konsentrasi Aktor, dan Ekologi Informasi (Periode: 24 Agustus – 25 November 2026)</p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="card-stat">
+      <div class="title">Total Post Unik</div>
+      <div class="value">873</div>
+      <div class="sub">1.286 post mentah (Overlap 32.1%)</div>
+    </div>
+    <div class="card-stat">
+      <div class="title">Hari Puncak (Peak)</div>
+      <div class="value">16 Okt</div>
+      <div class="sub">156 post / hari (Konsultasi MSCI)</div>
+    </div>
+    <div class="card-stat">
+      <div class="title">Konsentrasi Aktor (CR5)</div>
+      <div class="value">36.4%</div>
+      <div class="sub">CR10 = 50.2% (Didominasi Media Finansial)</div>
+    </div>
+    <div class="card-stat">
+      <div class="title">Teks Duplikat</div>
+      <div class="value">26.1%</div>
+      <div class="sub">228 post broadcast / sindikasi berita</div>
+    </div>
+    <div class="card-stat">
+      <div class="title">Teks Kosong</div>
+      <div class="value">7.8%</div>
+      <div class="sub">68 post hanya gambar / link</div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <h4>Ringkasan Temuan Metodologis & Analitik (Sesuai Modul Praktik 4):</h4>
+    <ul>
+      <li><strong>Efektivitas Kamus Kata Kunci Bertingkat:</strong> Pemecahan frasa menjadi 6 kueri (Teras: <em>standalone</em>; Kontekstual: <em>indonesia</em>, <em>downgrade</em>; Periferal: <em>ihsg</em>, <em>reklasifikasi</em>) meningkatkan volume dari 148 menjadi <strong>873 post unik</strong>, dengan seluruh kueri lolos uji Wilson Score 95% (Presisi &ge; 90%).</li>
+      <li><strong>Dinamika Gelombang Isu (PP1 Monitoring & Early Warning):</strong> Isu mengalami ledakan tajam pada <strong>16 Oktober 2026</strong> (156 post) saat MSCI merilis dokumen konsultasi potensi downgrade Indonesia dari <em>Emerging Market</em> ke <em>Standalone Market</em>, diikuti gelombang aksi jual (sell-off) IHSG pada 19-22 Oktober.</li>
+      <li><strong>Ekologi Informasi & Dominasi Aktor (PP3):</strong> Percakapan didominasi oleh portal berita bisnis nasional (<em>Katadata</em> 114 post, <em>Kumparan</em> 96 post, <em>Antara</em> 35 post) dan media global (<em>Bloomberg</em>, <em>NYTimes</em>, <em>Nikkei Asia</em>).</li>
+      <li><strong>Anomali Metadata Bahasa Platform:</strong> Sebesar <strong>42.6% post (372 baris)</strong> tidak memiliki tag bahasa platform (<code>langs</code> kosong). Memfilter berdasarkan tag bahasa bawaan platform terbukti akan membuang hampir separuh data penting.</li>
+    </ul>
+  </div>
+
+  <div class="section-title">1. Evaluasi Kualitas Kata Kunci (Langkah 7 - Wilson 95% Confidence Interval)</div>
+  <div class="chart-card" style="margin-bottom: 24px;">
+    <table>
+      <thead>
+        <tr>
+          <th>Tingkat Taksonomi</th>
+          <th>Kata Kunci Kueri</th>
+          <th>Mentah</th>
+          <th>Sampel (n)</th>
+          <th>Relevan (k)</th>
+          <th>Presisi</th>
+          <th>Wilson Score 95% CI</th>
+          <th>Keputusan Modul</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Teras (Core)</strong></td><td>msci standalone indonesia market</td><td>151</td><td>42</td><td>39</td><td>92.9%</td><td>[0.81 - 0.98]</td><td><span class="tag-keep">Pertahankan</span></td></tr>
+        <tr><td><strong>Teras (Core)</strong></td><td>msci standalone</td><td>224</td><td>42</td><td>40</td><td>95.2%</td><td>[0.84 - 0.99]</td><td><span class="tag-keep">Pertahankan</span></td></tr>
+        <tr><td><strong>Kontekstual</strong></td><td>msci indonesia</td><td>500</td><td>47</td><td>47</td><td>100.0%</td><td>[0.92 - 1.00]</td><td><span class="tag-keep">Pertahankan</span></td></tr>
+        <tr><td><strong>Kontekstual</strong></td><td>msci downgrade</td><td>198</td><td>50</td><td>45</td><td>90.0%</td><td>[0.79 - 0.96]</td><td><span class="tag-keep">Pertahankan</span></td></tr>
+        <tr><td><strong>Periferal</strong></td><td>msci ihsg</td><td>181</td><td>46</td><td>46</td><td>100.0%</td><td>[0.92 - 1.00]</td><td><span class="tag-keep">Pertahankan</span></td></tr>
+        <tr><td><strong>Periferal</strong></td><td>reklasifikasi msci</td><td>32</td><td>25</td><td>24</td><td>96.0%</td><td>[0.80 - 0.99]</td><td><span class="tag-keep">Pertahankan</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">2. Dinamika Temporal & Konsentrasi Aktor (Bagian 6 & 6.1)</div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Deret Waktu Volume Postingan Harian (WIB)</h3>
+      <canvas id="timeSeriesChart" height="230"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h3>Konsentrasi Top 10 Akun Aktor (CR10 = 50.2%)</h3>
+      <canvas id="authorChart" height="230"></canvas>
+    </div>
+  </div>
+
+  <div class="section-title">3. Analisis Semantik & Ekologi Informasi (Bagian 7)</div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Top 10 Bigram (Frasa 2 Kata Utama)</h3>
+      <canvas id="bigramChart" height="230"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h3>Sebaran Tag Bahasa Platform (Anomali 42.6% Untagged)</h3>
+      <canvas id="langChart" height="230"></canvas>
+    </div>
+  </div>
+
+  <div class="section-title">4. Klasifikasi Sentimen IndoBERT & Pembobotan Kata Kunci (Positif, Netral, Negatif)</div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Proporsi Sentimen Dataset (IndoBERT Transformer)</h3>
+      <canvas id="sentimentDoughnutChart" height="230"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h3>Dinamika Sentimen pada Hari-Hari Kunci Krisis (WIB)</h3>
+      <canvas id="sentimentTrendChart" height="230"></canvas>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom: 24px;">
+    <h3>Pembobotan Kata Kunci Berdasarkan Sentimen (Class-based TF-IDF / Keyword Weights)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Sentimen</th>
+          <th>Proporsi Data</th>
+          <th>Top 5 Kata Kunci Dominan (Keyword Weights)</th>
+          <th>Karakteristik Narasi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span style="background:#fee2e2; color:#b91c1c; font-weight:700; padding:3px 8px; border-radius:4px;">Negatif</span></td>
+          <td><strong>7.9%</strong> (69 post)</td>
+          <td><code>downgrade</code> (0.3487), <code>stock</code> (0.2663), <code>selloff</code> (0.1503), <code>warning</code> (0.1470), <code>terjun bebas</code></td>
+          <td>Kepanikan aksi jual pemodal, kekhawatiran arus keluar modal (outflow), dan peringatan risiko bursa.</td>
+        </tr>
+        <tr>
+          <td><span style="background:#f1f5f9; color:#475569; font-weight:700; padding:3px 8px; border-radius:4px;">Netral</span></td>
+          <td><strong>83.5%</strong> (729 post)</td>
+          <td><code>msci</code> (0.6557), <code>indonesia</code> (0.4099), <code>market</code> (0.2209), <code>cnn indonesia</code> (0.1516), <code>ihsg</code> (0.1453)</td>
+          <td>Pemberitaan faktual oleh media jurnalistik finansial (Katadata, Kumparan, Antara) dan rilis resmi BEI.</td>
+        </tr>
+        <tr>
+          <td><span style="background:#dcfce7; color:#15803d; font-weight:700; padding:3px 8px; border-radius:4px;">Positif</span></td>
+          <td><strong>8.6%</strong> (75 post)</td>
+          <td><code>market</code> (0.2841), <code>peluang</code>, <code>resilient</code>, <code>rebound</code>, <code>tumbuh</code></td>
+          <td>Optimisme valuasi saham murah, potensi rebound indeks, dan langkah reformasi transparansi pasar bursa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">5. Ekologi Informasi & Keterlibatan Publik (Bagian 7)</div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Domain Web Rujukan Teratas (Ekologi Informasi)</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Domain Berita / Tautan</th>
+            <th>Frekuensi Rujukan</th>
+            <th>Peran Informasi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>katadata.co.id</strong></td><td>114</td><td>Media ekonomi & analisis bursa utama domestik</td></tr>
+          <tr><td><strong>kumparan.com</strong></td><td>96</td><td>Portal berita agregator rubrik bisnis</td></tr>
+          <tr><td><strong>www.antaranews.com</strong></td><td>35</td><td>Kantor berita nasional (klarifikasi BEI/OJK)</td></tr>
+          <tr><td><strong>ekonomi.republika.co.id</strong></td><td>27</td><td>Perspektif makroekonomi & pasar modal</td></tr>
+          <tr><td><strong>bit.ly / t.co</strong></td><td>23</td><td>Shortlink otomatisasi RSS bot</td></tr>
+          <tr><td><strong>channelnewsasia.com / bloomberg</strong></td><td>15</td><td>Media keuangan internasional (isu capital outflow)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="chart-card">
+      <h3>Post Kunci dengan Engagement Terbesar</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Aktor</th>
+            <th>Likes</th>
+            <th>RT</th>
+            <th>Ringkasan Pernyataan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>@nytimes.com</strong></td><td>44</td><td>10</td><td>"Indonesian stocks suffered biggest plunge since 1998 amid MSCI concern"</td></tr>
+          <tr><td><strong>@peark.es</strong></td><td>25</td><td>1</td><td>"*MSCI TO RECLASSIFY INDONESIA FROM EMERGING TO STANDALONE"</td></tr>
+          <tr><td><strong>@peark.es</strong></td><td>21</td><td>0</td><td>"Final warning on Indonesia equity classification and market liquidity"</td></tr>
+          <tr><td><strong>@bloomberg.com</strong></td><td>19</td><td>5</td><td>"Indonesian markets extended selloff after MSCI review notification"</td></tr>
+          <tr><td><strong>@barchart.com</strong></td><td>18</td><td>5</td><td>"Indonesia Stock Market plunges to multi-year lows post MSCI consultation"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+// 1. Time Series Chart
+new Chart(document.getElementById('timeSeriesChart'), {
+  type: 'line',
+  data: {
+    labels: ['24 Agu', '01 Sep', '15 Sep', '01 Okt', '10 Okt', '15 Okt', '16 Okt (PUNCAK)', '17 Okt', '18 Okt', '19 Okt', '20 Okt', '21 Okt', '22 Okt', '23 Okt', '31 Okt', '12 Nov', '19 Nov', '23 Nov', '24 Nov'],
+    datasets: [{
+      label: 'Volume Post Harian (WIB)',
+      data: [1, 2, 3, 2, 4, 8, 156, 29, 27, 82, 62, 70, 67, 40, 6, 38, 14, 29, 18],
+      borderColor: '#0284c7',
+      backgroundColor: 'rgba(2, 132, 199, 0.12)',
+      fill: true,
+      tension: 0.25,
+      pointRadius: 4,
+      pointHoverRadius: 7
+    }]
+  },
+  options: { responsive: true, plugins: { legend: { display: false } } }
+});
+
+// 2. Author Chart
+new Chart(document.getElementById('authorChart'), {
+  type: 'bar',
+  data: {
+    labels: ['@katadata-poster', '@kumparan-poster', '@idntimes', '@antara-poster', '@republika-poster', '@project-push', '@txt.project-push', '@okezone', '@fortuneidn', '@sindonews'],
+    datasets: [{
+      label: 'Jumlah Post',
+      data: [114, 96, 42, 35, 31, 27, 27, 24, 22, 20],
+      backgroundColor: '#0284c7',
+      borderRadius: 4
+    }]
+  },
+  options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } } }
+});
+
+// 3. Bigram Chart
+new Chart(document.getElementById('bigramChart'), {
+  type: 'bar',
+  data: {
+    labels: ['cnn indonesia', 'standalone market', 'pasar modal', 'msci downgrade', 'after msci', 'stock market', 'emerging market', 'indonesian stocks', 'bank indonesia', 'status pasar'],
+    datasets: [{
+      label: 'Frekuensi Muncul',
+      data: [90, 86, 84, 62, 39, 38, 32, 28, 27, 25],
+      backgroundColor: '#f59e0b',
+      borderRadius: 4
+    }]
+  },
+  options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } } }
+});
+
+// 4. Language Chart
+new Chart(document.getElementById('langChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Kosong / Tanpa Tag (42.6%)', 'Bahasa Indonesia (33.7%)', 'English (17.8%)', 'Bahasa Lainnya (5.9%)'],
+    datasets: [{
+      data: [372, 294, 155, 52],
+      backgroundColor: ['#94a3b8', '#0284c7', '#38bdf8', '#cbd5e1']
+    }]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+});
+
+// 5. Sentiment Doughnut Chart
+new Chart(document.getElementById('sentimentDoughnutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Netral (83.5%)', 'Positif (8.6%)', 'Negatif (7.9%)'],
+    datasets: [{
+      data: [729, 75, 69],
+      backgroundColor: ['#94a3b8', '#22c55e', '#ef4444']
+    }]
+  },
+  options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+});
+
+// 6. Sentiment Trend on Key Days
+new Chart(document.getElementById('sentimentTrendChart'), {
+  type: 'bar',
+  data: {
+    labels: ['16 Okt', '19 Okt', '20 Okt', '21 Okt', '22 Okt', '12 Nov', '23 Nov'],
+    datasets: [
+      {
+        label: 'Negatif',
+        data: [14, 16, 8, 9, 5, 0, 0],
+        backgroundColor: '#ef4444'
+      },
+      {
+        label: 'Netral',
+        data: [129, 56, 45, 58, 57, 34, 28],
+        backgroundColor: '#94a3b8'
+      },
+      {
+        label: 'Positif',
+        data: [13, 10, 9, 3, 5, 4, 1],
+        backgroundColor: '#22c55e'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: { x: { stacked: true }, y: { stacked: true } },
+    plugins: { legend: { position: 'bottom' } }
+  }
+});
+</script>
+</body>
+</html>

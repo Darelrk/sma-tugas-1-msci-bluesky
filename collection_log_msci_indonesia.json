@@ -1,0 +1,28 @@
+{
+  "kata_kunci": "msci indonesia",
+  "waktu_eksekusi": {
+    "mulai": "2026-11-24T16:59:39.327094+00:00",
+    "selesai": "2026-11-24T17:00:10.488481+00:00"
+  },
+  "jendela_waktu": {
+    "wib_mulai": "2026-08-24",
+    "wib_selesai": "2026-11-25",
+    "since_utc": "2026-08-23T17:00:00Z",
+    "until_utc": "2026-11-24T17:00:00Z"
+  },
+  "total_baris": 500,
+  "integritas_berkas": {
+    "csv": {
+      "berkas": "pilot_msci_indonesia.csv",
+      "sha256": "624ef03a0a115e51aa3d26d193403350245cd7db20c7391f4cc9977c1d188971"
+    },
+    "jsonl": {
+      "berkas": "pilot_msci_indonesia.jsonl",
+      "sha256": "bbd1ed300cd313d6a2fb0e96ae994f1c48ee21d6a4d2b09b2458f51d9c130a4c"
+    },
+    "sampel": {
+      "berkas": "sampel_msci_indonesia.csv",
+      "sha256": "601cfd0dce4a50c7fbbfa6a589cbc94060228fa2cb675a12b2d9fb26b0e23394"
+    }
+  }
+}

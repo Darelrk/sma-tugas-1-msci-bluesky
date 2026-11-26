@@ -1,0 +1,28 @@
+{
+  "kata_kunci": "reklasifikasi msci",
+  "waktu_eksekusi": {
+    "mulai": "2026-11-24T17:00:40.150565+00:00",
+    "selesai": "2026-11-24T17:00:42.994155+00:00"
+  },
+  "jendela_waktu": {
+    "wib_mulai": "2026-08-24",
+    "wib_selesai": "2026-11-25",
+    "since_utc": "2026-08-23T17:00:00Z",
+    "until_utc": "2026-11-24T17:00:00Z"
+  },
+  "total_baris": 32,
+  "integritas_berkas": {
+    "csv": {
+      "berkas": "pilot_reklasifikasi_msci.csv",
+      "sha256": "9b2b8b7fbdb3ad1fe41c5889234d42b648058c88728e595f60ebd70ddc896fa2"
+    },
+    "jsonl": {
+      "berkas": "pilot_reklasifikasi_msci.jsonl",
+      "sha256": "39a6277b6217fec20e27ffe09797709d02c4c02db32aa52f924fc74d4bb37789"
+    },
+    "sampel": {
+      "berkas": "sampel_reklasifikasi_msci.csv",
+      "sha256": "f167a92647b0c2f475ef3328b1923c7f2d9d09fe9c92135651742355e5dc3e5d"
+    }
+  }
+}

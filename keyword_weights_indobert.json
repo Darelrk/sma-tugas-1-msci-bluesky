@@ -1,0 +1,128 @@
+{
+  "Negatif": [
+    {
+      "kata": "msci",
+      "bobot": 0.4502
+    },
+    {
+      "kata": "downgrade",
+      "bobot": 0.3487
+    },
+    {
+      "kata": "stock",
+      "bobot": 0.2663
+    },
+    {
+      "kata": "indonesia",
+      "bobot": 0.2346
+    },
+    {
+      "kata": "indonesian",
+      "bobot": 0.1839
+    },
+    {
+      "kata": "msci downgrade",
+      "bobot": 0.1715
+    },
+    {
+      "kata": "market",
+      "bobot": 0.1649
+    },
+    {
+      "kata": "selloff",
+      "bobot": 0.1503
+    },
+    {
+      "kata": "warning",
+      "bobot": 0.147
+    },
+    {
+      "kata": "indonesian stock",
+      "bobot": 0.1388
+    }
+  ],
+  "Netral": [
+    {
+      "kata": "msci",
+      "bobot": 0.6557
+    },
+    {
+      "kata": "indonesia",
+      "bobot": 0.4099
+    },
+    {
+      "kata": "market",
+      "bobot": 0.2209
+    },
+    {
+      "kata": "cnn indonesia",
+      "bobot": 0.1516
+    },
+    {
+      "kata": "cnn",
+      "bobot": 0.1516
+    },
+    {
+      "kata": "ihsg",
+      "bobot": 0.1453
+    },
+    {
+      "kata": "pasar",
+      "bobot": 0.1343
+    },
+    {
+      "kata": "standalone",
+      "bobot": 0.1214
+    },
+    {
+      "kata": "status",
+      "bobot": 0.1166
+    },
+    {
+      "kata": "saham",
+      "bobot": 0.1063
+    }
+  ],
+  "Positif": [
+    {
+      "kata": "msci",
+      "bobot": 0.4546
+    },
+    {
+      "kata": "indonesia",
+      "bobot": 0.3409
+    },
+    {
+      "kata": "market",
+      "bobot": 0.2841
+    },
+    {
+      "kata": "can",
+      "bobot": 0.2195
+    },
+    {
+      "kata": "orang",
+      "bobot": 0.1463
+    },
+    {
+      "kata": "too",
+      "bobot": 0.1463
+    },
+    {
+      "kata": "indonesia market",
+      "bobot": 0.1136
+    },
+    {
+      "kata": "could",
+      "bobot": 0.1136
+    },
+    {
+      "kata": "about",
+      "bobot": 0.1136
+    },
+    {
+      "kata": "pasar",
+      "bobot": 0.1136
+    }
+  ]
+}
